@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 204 70% 53%;
+  --accent: 130 50% 55%;
+  --bg: 210 36% 96%;
+  --surface: 255 100% 100%;
+  --card: 210 36% 96%;
+  --text: 222 84% 5%;
+  --text-muted: 215 16% 47%;
+  --border: 214 32% 91%;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 222 84% 5%;
+    --surface: 222 84% 8%;
+    --card: 222 84% 8%;
+    --text: 210 40% 98%;
+    --text-muted: 215 20% 65%;
+    --border: 217 32% 17%;
+  }
+}
+
+body {
+  color: hsl(var(--text));
+  background: hsl(var(--bg));
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors;
+  }
+  
+  .btn-accent {
+    @apply bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition-colors;
+  }
+  
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg p-6 shadow-sm;
+  }
+  
+  .prediction-card {
+    @apply bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow;
+  }
+  
+  .prediction-card.active {
+    @apply border-blue-300 bg-blue-50;
+  }
+  
+  .prediction-card.resolved {
+    @apply border-green-300 bg-green-50;
+  }
+  
+  .leaderboard-entry {
+    @apply flex items-center justify-between p-3 border-b border-gray-200 last:border-b-0;
+  }
+  
+  .leaderboard-entry.highlighted {
+    @apply bg-blue-50 border-blue-200;
+  }
+  
+  .badge-display {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 border border-green-200;
+  }
+  
+  .badge-display.small {
+    @apply px-2 py-1 text-sm;
+  }
+  
+  .badge-display.large {
+    @apply px-4 py-2 text-base;
+  }
+  
+  .text-display {
+    @apply text-2xl font-bold;
+  }
+  
+  .text-body {
+    @apply text-base leading-6;
+  }
+  
+  .text-caption {
+    @apply text-sm text-gray-600;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 200ms ease-in-out;
+}
